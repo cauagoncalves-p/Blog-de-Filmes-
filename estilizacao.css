@@ -1,0 +1,301 @@
+/* Reset geral */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #1E1E2F;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding-top: 60px;
+    /* Ajuste este valor conforme a altura da sua navbar */
+}
+
+/* Estilo do cabeçalho */
+header {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    padding: 14px 18px;
+    justify-content: space-between;
+    background-color: #282840;
+    color: #fff;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+
+/* Estilo dos links do menu */
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+}
+
+nav a {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0 15px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    padding: 14px 18px;
+    align-items: center;
+    transition: background-color 0.3s;
+}
+
+nav a:hover {
+    background-color: #7c0000;
+    color: aliceblue;
+    border-radius: 5px;
+
+}
+
+/* Estilo da barra de pesquisa */
+.pesquisa {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.pesquisa input[type="text"] {
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+}
+
+.search-bar {
+    margin-left: 5px;
+    padding: 5px 10px;
+    border: none;
+    background-color: #555;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Toggle do menu para mobile */
+.menu-toggle {
+    display: none;
+    /* Esconde o ícone do menu em desktop */
+    font-size: 24px;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* Esconde o checkbox que controla o menu mobile */
+#menu-mobile {
+    display: none;
+}
+
+/* Centralizar */
+.centralizar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+}
+
+.centralizar h1,
+.centralizar p {
+    text-align: left;
+    max-width: 700px;
+    margin-top: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.centralizar video {
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+    border-radius: 10px;
+    margin-top: 2rem;
+}
+
+/* Informações do filme */
+.discritivo-filme,
+.discritivo-serie {
+    text-align: left;
+    max-width: 700px;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.4;
+}
+
+.discritivo-filme-foto img,
+.discritivo-serie-foto img {
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+    border-radius: 10px;
+    margin-top: 1rem;
+}
+
+/* Footer */
+footer {
+    width: 100%;
+    background-color: #282840;
+    padding: 2rem 0;
+    margin-top: 4rem;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 2rem;
+}
+
+.categoria,
+.button-login {
+    flex: 1 1 calc(25% - 2rem);
+    min-width: 200px;
+}
+
+.categoria h2,
+.button-login h2 {
+    margin-bottom: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.categoria a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+
+.categoria p,
+.button-login a {
+    margin-bottom: 0.5rem;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.categoria p:hover a,
+.button-login a:hover {
+    color: #8D8DDC;
+}
+
+.button-login button {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #282840;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.button-login button:hover {
+    background-color: #8D8DDC;
+    transform: scale(1.05);
+}
+
+/*Responsividade header*/
+
+/* Responsividade para telas menores */
+@media (max-width: 1024px) {
+
+    /* Ajuste para exibir o ícone do menu em tablets e mobile */
+    .menu-toggle {
+        display: block;
+    }
+
+    /* Esconde o menu padrão em tablets e mobile */
+    nav {
+        display: none;
+    }
+
+    /* Exibe o menu ao ativar o menu mobile */
+    #menu-mobile:checked~nav {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 60%;
+        background-color: #07092a;
+        /* Mantém a cor original do menu */
+        padding: 10px 0;
+    }
+
+    nav a {
+        margin: 10px 0;
+        color: #fff;
+        /* Mantém a cor do texto original */
+    }
+
+    /* Estilo da barra de pesquisa em tablets e mobile */
+    .pesquisa {
+        margin-top: 0.5rem;
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: auto;
+    }
+
+    .pesquisa input[type="text"] {
+        width: auto;
+    }
+}
+
+
+/*Responsividade footer*/
+/* Responsividade para telas médias */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2rem;
+    }
+
+    .categoria,
+    .button-login {
+        flex: 1 1 calc(50% - 2rem);
+    }
+
+    .button-login button {
+        width: 100%;
+    }
+}
+
+/* Responsividade para telas pequenas */
+@media (max-width: 480px) {
+    .footer-container {
+        display: grid;
+        grid-template-columns: 1 1fr;
+        gap: 2rem;
+        margin-right: 2rem;
+    }
+
+    .categoria,
+    .button-login {
+        flex: 1 1 100%;
+        margin-bottom: 1rem;
+    }
+
+    .categoria h2,
+    .button-login h2 {
+        font-size: 1rem;
+    }
+
+    .categoria p,
+    .button-login a {
+        font-size: 0.9rem;
+    }
+
+    .button-login button {
+        width: 70%;
+    }
+}
+

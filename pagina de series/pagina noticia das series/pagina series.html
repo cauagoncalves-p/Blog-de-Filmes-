@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=[device-width], initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Lilita+One&family=Varela+Round&display=swap"
+        rel="stylesheet">
+    <title>Geek Vision</title>
+   <link rel="icon" type="image/x-icon" href="/Blog Verdadeiro/oculos-3d.png">
+    <style>
+        /* Reset geral */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #1E1E2F;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* Estilo do cabeçalho */
+        header {
+            position: fixed;
+            display: flex;
+            align-items: center;
+            padding: 14px 18px;
+            justify-content: space-between;
+            background-color: #282840;
+            color: #fff;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+
+        /* Estilo dos links do menu */
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            list-style: none;
+        }
+
+        nav a {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0 15px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            padding: 14px 18px;
+            align-items: center;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #7c0000;
+            color: aliceblue;
+            border-radius: 5px;
+
+        }
+
+        /* Estilo da barra de pesquisa */
+        .pesquisa {
+            display: flex;
+            align-items: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .pesquisa input[type="text"] {
+            padding: 5px;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+        }
+
+        .search-bar {
+            margin-left: 5px;
+            padding: 5px 10px;
+            border: none;
+            background-color: #555;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        /* Toggle do menu para mobile */
+        .menu-toggle {
+            display: none;
+            /* Esconde o ícone do menu em desktop */
+            font-size: 24px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        /* Esconde o checkbox que controla o menu mobile */
+        #menu-mobile {
+            display: none;
+        }
+
+
+        /* Parte dos filmes */
+        .banner {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .banner img {
+            margin-top: 6rem;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .pagina-series {
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #titulo-central {
+            margin: 30px;
+            font-size: 30px;
+            text-align: center;
+            color: #8D8DDC;
+        }
+
+        .foto-principal {
+            display: flex;
+            border-bottom: 5px purple solid;
+            margin: 2rem 0;
+        }
+
+        .foto-principal img {
+            height: 200px;
+            width: 300px;
+            margin: 0px;
+        }
+
+        .foto-principal .discritivo-serie .gradient {
+            color: white;
+            text-decoration: none;
+            margin-top: 10px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 20px;
+            max-width: 700px;
+            margin-left: 0;
+            /* Alinha à esquerda */
+            margin-right: 20px;
+            /* Adiciona margem à direita para separar da imagem */
+        }
+
+        .foto-principal .discritivo-serie {
+            position: relative;
+            margin-left: 0;
+            /* Alinha à esquerda */
+        }
+
+        .classificacao-outerbanks {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-family: Arial, sans-serif;
+            color: #8D8DDC;
+            font-size: 18px;
+            margin-left: 1rem;
+            margin-top: 3.5rem;
+        }
+
+        .classificacao-theboys {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-family: Arial, sans-serif;
+            color: #8D8DDC;
+            font-size: 18px;
+            margin-left: 1rem;
+            margin-top: 3.5rem;
+        }
+
+        .classificacao-strangersthings {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-family: Arial, sans-serif;
+            color: #8D8DDC;
+            font-size: 18px;
+            margin-left: 1rem;
+            margin-top: 3.5rem;
+        }
+
+        .classificacao-theoffice {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-family: Arial, sans-serif;
+            color: #8D8DDC;
+            font-size: 18px;
+            margin-left: 1rem;
+            margin-top: 3rem;
+        }
+
+        .classificacao-outerbanks img,
+        .classificacao-strangersthings img,
+        .classificacao-theboys img,
+        .classificacao-theoffice img {
+            width: 60px;
+            height: 60px;
+        }
+
+        .explicativo-serie {
+            display: flex;
+            margin-bottom: 10px;
+            margin-left: 0;
+            /* Alinha à esquerda */
+        }
+
+        .foto-principal .discritivo-serie .explicativo-serie p {
+            border: none;
+            background-color: #6767A1;
+            border-radius: 5px;
+            padding: 2px;
+            color: black;
+            font-size: 15px;
+            margin-left: 15px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .gradient {
+            background-image: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: black;
+            margin-left: 30px;
+            /* Define uma margem à esquerda */
+            padding-left: 20px;
+            /* Opcional, para dar mais espaçamento */
+        }
+        /* Footer */
+        footer {
+            width: 100%;
+            background-color: #282840;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 2rem;
+        }
+
+        .categoria,
+        .button-login {
+            flex: 1 1 calc(25% - 2rem);
+            min-width: 200px;
+        }
+
+        .categoria h2,
+        .button-login h2 {
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .categoria a {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+
+        .categoria p,
+        .button-login a {
+            margin-bottom: 0.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .categoria p:hover a,
+        .button-login a:hover {
+            color: #8D8DDC;
+        }
+
+        .button-login button {
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #282840;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .button-login button:hover {
+            background-color: #8D8DDC;
+            transform: scale(1.05);
+        }
+
+        /*Responsividade header*/
+
+        /* Responsividade para telas menores */
+        @media (max-width: 1024px) {
+
+            /* Ajuste para exibir o ícone do menu em tablets e mobile */
+            .menu-toggle {
+                display: block;
+            }
+
+            /* Esconde o menu padrão em tablets e mobile */
+            nav {
+                display: none;
+            }
+
+            /* Exibe o menu ao ativar o menu mobile */
+            #menu-mobile:checked~nav {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 60%;
+                background-color: #07092a;
+                /* Mantém a cor original do menu */
+                padding: 10px 0;
+            }
+
+            nav a {
+                margin: 10px 0;
+                color: #fff;
+                /* Mantém a cor do texto original */
+            }
+
+            /* Estilo da barra de pesquisa em tablets e mobile */
+            .pesquisa {
+                margin-top: 0.5rem;
+                position: absolute;
+                top: 10px;
+                left: 55%;
+                transform: translateX(-50%);
+                width: auto;
+            }
+
+            .pesquisa input[type="text"] {
+                width: auto;
+            }
+        }
+
+        /* Responsividade da tela de filmes */
+        @media (max-width: 768px) {
+
+            .banner img {
+                margin-top: 3rem;
+            }
+
+            .foto-principal {
+                flex-direction: column;
+                align-items: center;
+                padding: 0 15px;
+                /* Adiciona padding nas laterais */
+            }
+
+            .foto-principal img {
+                width: 100%;
+                height: auto;
+            }
+
+            .classificacao-outerbanks,
+            .classificacao-strangersthings,
+            .classificacao-theboys,
+            .classificacao-theoffice {
+                font-size: 14px;
+                margin-top: 1rem;
+                margin-left: 0;
+                gap: 10px;
+            }
+
+            .classificacao-outerbanks img,
+            .classificacao-strangersthings img,
+            .classificacao-theboys img,
+            .classificacao-theoffice img {
+                width: 50px;
+                height: 50px;
+            }
+
+            .pesquisa input {
+                width: 100%;
+                max-width: 250px;
+            }
+
+            .foto-principal .discritivo-serie .gradient {
+                font-size: 14px;
+                margin-right: 0;
+                margin-left: 0;
+                padding-left: 0;
+            }
+
+            .foto-principal .discritivo-serie .explicativo-serie p {
+                font-size: 12px;
+                margin-left: 0;
+            }
+        }
+
+        /* Responsividade para telas pequenas */
+        @media (max-width: 480px) {
+            .foto-principal {
+                flex-direction: column;
+                align-items: center;
+                padding: 0 15px;
+                /* Adiciona padding nas laterais */
+            }
+
+            .foto-principal img {
+                width: 100%;
+                height: auto;
+            }
+
+            .classificacao-outerbanks,
+            .classificacao-strangersthings,
+            .classificacao-theboys,
+            .classificacao-theoffice {
+                font-size: 16px;
+                margin-top: 0.5rem;
+                margin-left: 0;
+                gap: 10px;
+            }
+
+            .classificacao-outerbanks img,
+            .classificacao-strangersthings img,
+            .classificacao-theboys img,
+            .classificacao-theoffice img {
+                width: 40px;
+                height: 40px;
+            }
+
+            .foto-principal .discritivo-serie .gradient {
+                font-size: 16px;
+                margin-right: 0;
+                margin-left: 0;
+                padding-left: 0;
+            }
+
+            .foto-principal .discritivo-serie .explicativo-serie p {
+                font-size: 12px;
+                margin-left: 0;
+            }
+        }
+
+        .explicativo-serie p {
+            margin-right: 5px;
+        }
+
+            /*Responsividade footer*/
+        /* Responsividade para telas médias */
+        @media (max-width: 768px) {
+            .footer-container {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 2rem;
+            }
+
+            .categoria,
+            .button-login {
+                flex: 1 1 calc(50% - 2rem);
+            }
+
+            .button-login button {
+                width: 100%;
+            }
+        }
+
+        /* Responsividade para telas pequenas */
+        @media (max-width: 480px) {
+            .footer-container {
+                display: grid;
+                grid-template-columns: 1 1fr;
+                gap: 2rem;
+                margin-right: 2rem;
+            }
+
+            .categoria,
+            .button-login {
+                flex: 1 1 100%;
+                margin-bottom: 1rem;
+            }
+
+            .categoria h2,
+            .button-login h2 {
+                font-size: 1rem;
+            }
+
+            .categoria p,
+            .button-login a {
+                font-size: 0.9rem;
+            }
+
+            .button-login button {
+                width: 70%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <input type="checkbox" id="menu-mobile">
+        <label for="menu-mobile" class="menu-toggle">&#9776;</label>
+        <nav>
+
+          
+            <a href="/index.html" alt="Página inicial">Home</a>
+            <a href="/index.html#noticias" alt="Principais Noticias">Principais Notícias</a>
+            <a href="/index.html#lancamento" alt="Últimos lançamentos">Lançamentos</a>
+            <a href="/index.html#galeria-oscar" alt="Indicados ao Oscar">Indicados ao Oscar</a>
+
+
+            <a href="/pagina de filmes/pagina noticia dos filmes/pagina de filmes.html" alt="Filmes Recomendados">Filmes
+                Recomendados</a>
+            <a href="/pagina de series/pagina noticia das series/pagina series.html" alt="Séries recomendadas">Séries
+                Recomendadas</a>
+        </nav>
+        <form class="pesquisa">
+            <input id="bpesquisa" type="text" placeholder="Pesquisar" alt="barra de pesquisa">
+            <button type="submit" class="search-bar">Buscar</button>
+        </form>
+    </header>
+
+
+    <div class="banner">
+        <img src="/imagens adicionais/banner.avif" alt="banner">
+    </div>
+    <!--Primeiro filme-->
+    <div class="pagina-series">
+
+        <h3 id="titulo-central">Confira as séries de 2024</h3>
+
+        <div class="foto-principal">
+            <img src="/pagina de series/pagina noticia das series/pagina the boys/the-boys-saison-3-1.webp"
+                alt="the boys">
+            <div class="discritivo-serie">
+                <h3 class="gradient"><a
+                        href="/pagina de series/pagina noticia das series/pagina the boys/pagina the boys.html">The
+                        Boys: Super-Heróis Corrompidos e a Realidade Sombria!</a></h3>
+                <p class="classificacao-theboys">Classificação do filme pelo público: <img
+                        src="/imagens adicionais/icone estrela.png" alt="icone">
+                </p>
+                <div class="explicativo-serie">
+                    <p>Indicação +18</p>
+                    <p>Ação e Comédia</p>
+                    <p>Disponível na Prime Video</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Segundo Filme-->
+    <div class="pagina-series">
+        <div class="foto-principal">
+            <img src="/pagina de series/pagina noticia das series/pagina outer banks/foto capa outer banks.webp"
+                alt="outer banks">
+            <div class="discritivo-serie">
+                <h3 class="gradient"><a
+                        href="/pagina de series/pagina noticia das series/pagina outer banks/pagina outer banks.html">Outer
+                        Banks: Mistérios, Aventura e a Luta por um Tesouro Entre as
+                        Classes!.</a></h3>
+                <p class="classificacao-outerbanks">Classificação do filme pelo público: <img
+                        src="/imagens adicionais/icone estrela.png" alt="icone"></p>
+                <div class="explicativo-serie">
+                    <p>Indicação: +14</p>
+                    <p>Ação e aventura</p>
+                    <p>Disponível na Netflix</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Terceiro Filme-->
+    <div class="pagina-series">
+        <div class="foto-principal">
+            <img src="/pagina de series/pagina noticia das series/pagina stranger things/foto stranger things principal.jpg"
+                alt="stranger sthings">
+            <div class="discritivo-serie">
+                <h3 class="gradient"><a
+                        href="/pagina de series/pagina noticia das series/pagina stranger things/pagina stranger sthings.html">Stranger
+                        Things: Mistérios Sobrenaturais e Aventura nos Anos 80!</a></h3>
+                <p class="classificacao-strangersthings">Classificação do filme pelo público: <img
+                        src="/imagens adicionais/icone estrela.png" alt="icone"></p>
+                <div class="explicativo-serie">
+                    <p>Indicação: +16</p>
+                    <p>Ação e Terror</p>
+                    <p>Disponível na Netflix</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Quarto Filmes-->
+
+    <div class="pagina-series">
+        <div class="foto-principal">
+            <img src="/pagina de series/pagina noticia das series/pagina The Office/the office capa.png"
+                alt="The Office">
+            <div class="discritivo-serie">
+                <h3 class="gradient"><a
+                        href="/pagina de series/pagina noticia das series/pagina the office/pagina the office.html">The
+                        Office: O Escritório Mais Divertido da TV Pode Estar de Volta com Novas Histórias e Personagens
+                        Icônicos</a></h3>
+                <p class="classificacao-theoffice">Classificação do filme pelo público: <img
+                        src="/imagens adicionais/icone estrela.png" alt="icone"></p>
+                <div class="explicativo-serie">
+                    <p>Indicação Livre</p>
+                    <p>Ação e aventura</p>
+                    <p>Disponível em todos os cinemas de SP</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Footer-->
+      <!--Footer-->
+      <footer>
+        <div class="footer-container">
+            <div class="categoria">
+                <h2>Filmes</h2>
+                <p><a href="/pagina de filmes/pagina noticia dos filmes/pagina moana2/pagina moana 2.html">Moana 2</a>
+                </p>
+                <p><a
+                        href="/pagina de filmes/pagina noticia dos filmes/pagina divertidamente 2/pagina divertidamente 2.html">Divertidamente
+                        2</a></p>
+                <p><a href="/pagina de filmes/pagina noticia dos filmes/pagina deadpool/pagina deadpool.html">Deadpool &
+                        Wolverine</a></p>
+                <p><a href="/pagina de filmes/pagina noticia dos filmes/pagina meumalvado/pagina meu malvado.html">Meu
+                        Malvado Favorito 4</a></p>
+            </div>
+
+            <div class="categoria">
+                <h2>Séries</h2>
+                <p><a
+                        href="/pagina de series/pagina noticia das series/pagina stranger things/pagina stranger sthings.html">Stranger
+                        Things</a></p>
+                <p><a href="/pagina de series/pagina noticia das series/pagina outer banks/pagina outer banks.html">Outer
+                        Banks</a></p>
+                <p><a href="/pagina de series/pagina noticia das series/pagina the boys/pagina the boys.html">The Boys</a></p>
+                <p><a href="/pagina de series/pagina noticia das series/pagina the office/pagina the office.html">The
+                        Office</a></p>
+            </div>
+
+            <div class="categoria">
+                <h2>Indicados ao Oscar</h2>
+              <p> <a href="/index.html#galeria-oscar">Barbie o Filme</a></p>
+                <p> <a href="/index.html#galeria-oscar">Oppenheimer</a></p>
+                <p> <a href="/index.html#galeria-oscar">Assasino da lua das Flores</a></p>
+                <p> <a href="/index.html#galeria-oscar">Pobres Criaturas</a></p>
+            </div>
+
+            <div class="button-login">
+                <h2>Login</h2>
+                <a href="/cadastro e login/login.html"><button id="button">Junte-se a Nós</button></a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

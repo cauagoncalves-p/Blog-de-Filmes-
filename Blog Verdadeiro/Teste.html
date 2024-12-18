@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rodapé Responsivo</title>
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            letter-spacing: 1px;
+        }
+
+        body {
+            background-color: #1E1E2F;
+            color: #fff;
+        }
+
+        main {
+            height: 80vh;
+        }
+
+        footer {
+            width: 100%;
+            background-color: #282840;
+            padding: 2rem 0;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 2rem;
+        }
+
+        .categoria,
+        .button-login {
+            flex: 1 1 calc(25% - 2rem);
+            min-width: 200px;
+        }
+
+        .categoria h2,
+        .button-login h2 {
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .categoria a{
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+
+        .categoria p,
+        .button-login a {
+            margin-bottom: 0.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .categoria p:hover a,
+        .button-login a:hover {
+            color: #8D8DDC;;
+        }
+
+        .button-login button {
+            background-color:rgba(255, 255, 255, 0.8);
+            color: #282840;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .button-login button:hover {
+            background-color: #8D8DDC;
+            transform: scale(1.05);
+        }
+
+        /* Responsividade para telas médias */
+        @media (max-width: 768px) {
+            .footer-container {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 2rem;
+            }
+
+            .categoria,
+            .button-login {
+                flex: 1 1 calc(50% - 2rem);
+            }
+
+            .button-login button {
+                width: 100%;
+            }
+        }
+
+        /* Responsividade para telas pequenas */
+        @media (max-width: 480px) {
+            .footer-container {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+            }
+
+            .categoria,
+            .button-login {
+                flex: 1 1 100%;
+                margin-bottom: 1rem;
+            }
+
+            .categoria h2,
+            .button-login h2 {
+                font-size: 1rem;
+            }
+
+            .categoria p,
+            .button-login a {
+                font-size: 0.9rem;
+            }
+
+            .button-login button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <!-- Conteúdo principal da página -->
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="categoria">
+                <h2>Filmes</h2>
+                <p><a href="/pagina de filmes/pagina noticia dos filmes/pagina moana2/pagina moana 2.html">Moana 2</a></p>
+                <p><a href="/pagina de filmes/pagina noticia dos filmes/pagina divertidamente 2/pagina divertidamente 2.html">Divertidamente 2</a></p>
+                <p><a href="/pagina de filmes/pagina noticia dos filmes/pagina deadpool/pagina deadpool.html">Deadpool & Wolverine</a></p>
+                <p><a href="/pagina de filmes/pagina noticia dos filmes/pagina meumalvado/pagina meu malvado.html">Meu Malvado Favorito 4</a></p>
+            </div>
+
+            <div class="categoria">
+                <h2>Séries</h2>
+                <p><a href="/pagina de series/pagina noticia das series/pagina stranger things/pagina stranger sthings.html">Stranger Things</a></p>
+                <p><a href="/pagina de series/pagina noticia das series/pagina outer banks/pagina outer banks.html">Outer Banks</a></p>
+                <p><a href="#">The Boys</a></p>
+                <p><a href="/pagina de series/pagina noticia das series/pagina the office/pagina the office.html">The Office</a></p>
+            </div>
+
+            <div class="categoria">
+                <h2>Indicados ao Oscar</h2>
+              <p> <a href="/index.html#galeria-oscar">Barbie o Filme</a></p>
+                <p> <a href="/index.html#galeria-oscar">Oppenheimer</a></p>
+                <p> <a href="/index.html#galeria-oscar">Assasino da lua das Flores</a></p>
+                <p> <a href="/index.html#galeria-oscar">Pobres Criaturas</a></p>
+            </div>
+
+            <div class="button-login">
+                <h2>Login</h2>
+                <a href="/cadastro e login/login.html"><button id="button">Junte-se a Nós</button></a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

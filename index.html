@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geek Vision</title>
+   <link rel="icon" type="image/x-icon" href="/Blog Verdadeiro/oculos-3d.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #1E1E2F;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* Estilo do cabeçalho */
+        header {
+            position: fixed;
+            display: flex;
+            align-items: center;
+            padding: 14px 18px;
+            justify-content: space-between;
+            background-color: #282840;
+            color: #fff;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+
+        /* Estilo dos links do menu */
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            list-style: none;
+        }
+
+        nav a {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0 15px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            padding: 14px 18px;
+            align-items: center;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #7c0000;
+            color: aliceblue;
+            border-radius: 5px;
+
+        }
+
+        /* Estilo da barra de pesquisa */
+        .pesquisa {
+            display: flex;
+            align-items: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .pesquisa input[type="text"] {
+            padding: 5px;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+        }
+
+        .search-bar {
+            margin-left: 5px;
+            padding: 5px 10px;
+            border: none;
+            background-color: #555;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        /* Toggle do menu para mobile */
+        .menu-toggle {
+            display: none;
+            /* Esconde o ícone do menu em desktop */
+            font-size: 24px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        /* Esconde o checkbox que controla o menu mobile */
+        #menu-mobile {
+            display: none;
+        }
+
+        /*centralizando a pagina*/
+        .centralizar {
+            justify-items: center;
+
+        }
+
+        .banner-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .banner-logo img {
+            margin-top: 6rem;
+            max-width: 100%;
+            height: auto;
+        }
+
+        /*noticia*/
+        h1 {
+            color: rgba(255, 255, 255, 0.8);
+            font-family: Arial, Helvetica, sans-serif;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        h3 {
+            margin-top: 2rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        #date {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        #noticias .imagem {
+            display: flex;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 2rem;
+            border-bottom: solid 5px rgb(1, 1, 129);
+        }
+
+        #noticias .imagem img {
+            height: 180px;
+            width: 280px;
+            border-radius: 8px 8px 0 0;
+        }
+
+        #noticias .discritivo-noticia {
+
+            margin-left: 2rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-align: justify;
+        }
+
+        /*titulo filmes*/
+        .titulo-filmes {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.8);
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .titulo-filmes h2,
+        p {
+            margin-top: 1rem;
+        }
+
+        .titulo-filmes #date {
+            float: right;
+            font-size: 0.9rem;
+        }
+
+        /*banner de lançamentos*/
+
+        #lancamento {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 4rem;
+        }
+
+        #lancamento img {
+            height: 400px;
+            width: 700px;
+            display: block;
+            margin: 0
+        }
+
+        .banner p {
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 800px;
+            text-align: center;
+        }
+
+        /*filmes de dezembro*/
+
+        .sessao-filme {
+            justify-items: center;
+        }
+
+        .sessao-filme video {
+            width: 100%;
+            max-width: 700px;
+            height: auto;
+            border-radius: 10px;
+            margin-top: 2rem;
+        }
+
+        .sessao-filme p {
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 700px;
+        }
+
+        /*oscar*/
+        #titulo-oscar {
+            margin-top: 2rem;
+        }
+
+        #galeria-oscar {
+            margin-top: 2rem;
+            display: flex;
+            max-width: 900px;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .oscar img {
+            height: 350px;
+            width: 250px;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .oscar img:hover {
+            transform: scale(1.04);
+        }
+
+        .oscar h4 {
+            margin-top: 1rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .oscar p {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /*Footer*/
+        footer {
+            width: 100%;
+            background-color: #282840;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 2rem;
+        }
+
+        .categoria,
+        .button-login {
+            flex: 1 1 calc(25% - 2rem);
+            min-width: 200px;
+        }
+
+        .categoria h2,
+        .button-login h2 {
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .categoria a {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+
+        .categoria p,
+        .button-login a {
+            margin-bottom: 0.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .categoria p:hover a,
+        .button-login a:hover {
+            color: #8D8DDC;
+        }
+
+        .button-login button {
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #282840;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .button-login button:hover {
+            background-color: #8D8DDC;
+            transform: scale(1.05);
+        }
+
+        /*Responsividade header*/
+
+        /* Responsividade para telas menores */
+        @media (max-width: 1024px) {
+
+            /* Ajuste para exibir o ícone do menu em tablets e mobile */
+            .menu-toggle {
+                display: block;
+            }
+
+            /* Esconde o menu padrão em tablets e mobile */
+            nav {
+                display: none;
+            }
+
+            /* Exibe o menu ao ativar o menu mobile */
+            #menu-mobile:checked~nav {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 60%;
+                background-color: #07092a;
+                /* Mantém a cor original do menu */
+                padding: 10px 0;
+            }
+
+            nav a {
+                margin: 10px 0;
+                color: #fff;
+                /* Mantém a cor do texto original */
+            }
+
+            /* Estilo da barra de pesquisa em tablets e mobile */
+            .pesquisa {
+                margin-top: 0.5rem;
+                position: absolute;
+                top: 10px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: auto;
+            }
+
+            .pesquisa input[type="text"] {
+                width: auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            /*banner*/
+
+            .banner-logo img {
+                margin-top: 3rem;
+            }
+
+            /*parte das noticias*/
+
+            h1 {
+                margin-top: 3rem;
+
+            }
+
+            #noticias {
+                align-items: center;
+                padding: 0 15px;
+                flex-direction: column;
+
+            }
+
+            #noticias::after {
+                content: '';
+                display: block;
+                width: calc(100% + 30px);
+                /* Garante que a largura ocupe toda a tela, descontando o padding */
+                margin-left: -15px;
+                /* Compensa o padding do contêiner pai */
+                border-bottom: solid 5px rgb(1, 1, 129);
+                /* Adiciona o border-bottom na largura total */
+                margin-top: 0.8rem;
+            }
+
+            #noticias .imagem {
+                flex-direction: column;
+                align-items: center;
+                padding: 0%;
+                border-bottom: none;
+            }
+
+            #noticias .imagem:after {
+                display: flex;
+                width: 100%;
+                border-bottom: solid 2px rgb(1, 1, 129);
+            }
+
+            #noticias .imagem img {
+                width: 100%;
+                height: 100%;
+            }
+
+            #noticias h3 {
+                margin-bottom: 2rem;
+                font-size: 1rem;
+            }
+
+            #noticias .discritivo-noticia {
+                margin-left: 0;
+                margin-top: 1rem;
+                text-align: justify;
+            }
+
+            #noticias .imagem #date {
+                font-size: 0.7rem;
+                text-align: center;
+                margin-bottom: 0.5rem;
+                margin-top: 0.5rem;
+                text-align: left;
+
+            }
+
+            .titulo-filmes {
+                padding: 0 15px;
+            }
+
+            .titulo-filmes p {
+                text-align: justify;
+            }
+
+            /*banner filmes de dezembro*/
+            .banner {
+                padding: 0 15px;
+            }
+
+            #lancamento {
+                margin-top: 2rem;
+            }
+
+            .banner #lancamento img {
+                width: 100%;
+                height: auto;
+            }
+
+            .banner p {
+                text-align: justify;
+            }
+
+            /*Parte dos filmes*/
+            .sessao-filme {
+                padding: 0 15px;
+                justify-items: none;
+            }
+
+            .sessao-filme p {
+                text-align: justify;
+            }
+
+            /*Oscar*/
+            #titulo-oscar {
+                font-size: 1.5rem;
+                margin-top: 3rem;
+                text-align: center;
+            }
+
+            #galeria-oscar {
+                padding: 0 15px;
+                display: grid;
+                gap: 2rem;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                justify-content: center;
+                max-width: 900px;
+                margin: 2rem auto;
+            }
+
+            .oscar {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                background-color: #282840;
+                padding: 1rem;
+                border-radius: 15px;
+            }
+
+            .oscar img {
+                width: 100%;
+                height: auto;
+                border-radius: 15px;
+
+            }
+
+            .oscar img:hover {
+                transform: none;
+            }
+
+            .oscar h4 {
+                font-size: 1.2rem;
+                margin-top: 1rem;
+            }
+
+            .oscar p {
+                font-size: 1rem;
+                color: rgba(255, 255, 255, 0.8);
+            }
+
+        }
+
+        /*Responsividade footer*/
+        /* Responsividade para telas médias */
+        @media (max-width: 768px) {
+            .footer-container {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 2rem;
+            }
+
+            .categoria,
+            .button-login {
+                flex: 1 1 calc(50% - 2rem);
+            }
+
+            .button-login button {
+                width: 100%;
+            }
+        }
+
+        /* Responsividade para telas pequenas */
+        @media (max-width: 480px) {
+            .footer-container {
+                display: grid;
+                grid-template-columns: 1 1fr;
+                gap: 2rem;
+                margin-right: 2rem;
+            }
+
+            .categoria,
+            .button-login {
+                flex: 1 1 100%;
+                margin-bottom: 1rem;
+            }
+
+            .categoria h2,
+            .button-login h2 {
+                font-size: 1rem;
+            }
+
+            .categoria p,
+            .button-login a {
+                font-size: 0.9rem;
+            }
+
+            .button-login button {
+                width: 70%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <input type="checkbox" id="menu-mobile">
+        <label for="menu-mobile" class="menu-toggle">&#9776;</label>
+        <nav>
+
+            <a href="index.html" alt="Página inicial">Home</a>
+            <a href="#noticias" alt="Principais Noticias">Principais Notícias</a>
+            <a href="#lancamento" alt="Últimos lançamentos">Lançamentos</a>
+            <a href="#galeria-oscar" alt="Indicados ao Oscar">Indicados ao Oscar</a>
+
+            <a href="/pagina de filmes/pagina noticia dos filmes/pagina de filmes.html" alt="Filmes Recomendados">Filmes
+                Recomendados</a>
+            <a href="/pagina de series/pagina noticia das series/pagina series.html" alt="Séries recomendadas">Séries
+                Recomendadas</a>
+        </nav>
+        <form class="pesquisa">
+            <input id="bpesquisa" type="text" placeholder="Pesquisar" alt="barra de pesquisa">
+            <button type="submit" class="search-bar">Buscar</button>
+        </form>
+    </header>
+
+    <div class="banner-logo">
+        <img src="/imagens adicionais/banner.avif" alt="banner">
+    </div>
+
+    <!--Centralizando a pagina-->
+    <div class="centralizar">
+        <!--Noticias-->
+        <h1>Noticias</h1>
+        <!--Parte das noticias-->
+        <div id="noticias">
+            <h3>Dwayne Johnson conta que utilizou traje para interpretar Maui no live-action de Moana</h3>
+            <div class="imagem">
+                <img src="/Blog Verdadeiro/imagens/foto moana.jpg" alt="ator da moana">
+                <div class="discritivo-noticia">
+                    <p id="date">28/11/2024</p>
+                    <p>Ator chamou a atenção ao surgir extremamente musculoso em fotos dos bastidores</p> <br>
+                    <p>Embora seja reconhecido por seu porte físico, o astro parecia ainda mais musculoso nas fotos, o
+                        que gerou comentários e dúvidas por parte do público.</p>
+                </div>
+            </div>
+        </div>
+        <!--Segunda noticia-->
+        <div id="noticias">
+            <h3>Keanu Reeve revela detalhes sobre Shadow em vídeo dos bastidores de Sonic 3</h3>
+            <div class="imagem">
+                <img src="/Blog Verdadeiro/imagens/capa sonic.jpg" alt="ator sonic">
+                <div class="discritivo-noticia">
+                    <p id="date">28/11/2024</p>
+                    <p>Ator empresta a voz ao principal antagonista da sequência</p> <br>
+                    <p>Faltando menos de um mês para a estreia de “Sonic 3 - O Filme” no Brasil, marcada para o dia 25
+                        de dezembro, a Paramount Pictures divulgou um vídeo inédito dos bastidores do longa. Na prévia,
+                        Keanu Reeves (‘Matrix') aparece em um estúdio enquanto empresta a voz a Shadow, grande vilão da
+                        trama.</p>
+                </div>
+            </div>
+        </div>
+        <!--Parte dos filmes-->
+        <div class="titulo-filmes">
+            <h3>Confira os filmes de 2024</h3>
+            <h2>Cinema 2024: Confira os lançamentos para o mês dezembro</h2>
+            <p>Shows de produções aguardadas, como ‘O Auto da Compadecida 2’, ‘Sonic 3’ e ‘Mufasa – O Rei Leão’, estão
+                chegando
+                às telonas </p>
+        </div>
+
+        <!--banner de lançamento-->
+        <div class="banner">
+            <div id="lancamento">
+                <img src="/Blog Verdadeiro/imagens/lançamentos.jpg" alt="lançamentos de filmes">
+            </div>
+            <p>Dezembro já está logo ali e, com ele, filmes inéditos estreiam para animar as telonas nacionais. Nesta
+                lista,
+                selecionamos os lançamentos mais aguardados do período - são muitas opções para escolher.
+                Confira as datas, sinopses e trailers dos filmes que têm previsão de estreia para o mês de dezembro de
+                2024 nos cinemas:</p>
+        </div>
+
+        <!--Filmes de 2024-->
+        <div class="sessao-filme">
+            <h3> O SENHOR DOS ANÉIS: A GUERRA DOS ROHIRRIM (05/12)</h3>
+            <video poster="/Blog Verdadeiro/imagens/capa senhor dos aneis.jpg" controls loop muted>
+                <source src="/Blog Verdadeiro/videos/A Guerra dos Rohirrim l Trailer.mp4" type="video/mp4">
+            </video>
+            <p>Sinopse: Ambientado 183 anos antes dos eventos narrados na trilogia original de filmes,
+                "O Senhor dos Anéis: A Guerra dos Rohirrim" conta o destino da Casa de Helm Mão-de-Martelo,
+                o lendário Rei de Rohan. Um ataque repentino de Wulf, um senhor de Dunlending inteligente e implacável,
+                em busca de vingança pela morte de seu pai, força Helm e seu povo a fazer uma ousada última
+                resistência na antiga fortaleza de Hornburg - uma poderosa construção que, mais tarde,
+                será conhecida como Abismo de Helm.</p>
+        </div>
+
+        <div class="sessao-filme">
+            <h3>
+                Sonic 3 - O Filme (25/12)</h3>
+            <video poster="/Blog Verdadeiro/imagens/capa sonic.jpg" controls loop muted>
+                <source src="/Blog Verdadeiro/videos/Sonic 3_ O Filme .mp4" type="video/mp4">
+            </video>
+            <p>Sinopse: “Sonic 3: O Filme” acompanha a nova jornada da Equipe Sonic,
+                formada pelo personagem-título, Tails e Knuckles, que se reúne contra um novo e poderoso adversário,
+                Shadow, um vilão misterioso com poderes diferentes de tudo o que eles já enfrentaram antes.</p>
+        </div>
+
+        <div class="sessao-filme">
+            <h3> MUFASA - O REI LEÃO (19/12)
+            </h3>
+            <video poster="/Blog Verdadeiro/imagens/capa mufasa.jpg" controls loop muted>
+                <source src="/Blog Verdadeiro/videos/Mufasa_ O Rei Leão .mp4" type="video/mp4">
+            </video>
+            <p>Sinopse: Mufasa: O Rei Leão” contará a história de Mufasa e Scar antes de Simba.
+                A trama tem a ajuda de Rafiki, Timão e Pumba, que juntos contam a lenda de Mufasa à jovem filhote de
+                leão Kiara,
+                filha de Simba e Nala. Narrado através de flashbacks, a história apresenta Mufasa como um filhote órfão,
+                perdido e sozinho até que ele conhece um simpático leão chamado Taka – o herdeiro de uma linhagem real.
+                O encontro ao acaso dá início a uma grande jornada de um grupo extraordinário de deslocados em busca de
+                seu destino,
+                além de revelar a ascensão de um dos maiores reis das Terras do Orgulho.</p>
+        </div>
+
+        <div class="sessao-filme">
+            <h3> O AUTO DA COMPADECIDA 2 (25/12)</h3>
+            <video poster="/Blog Verdadeiro/imagens/capa auto da compadecida.jpg" controls loop muted>
+                <source src="/Blog Verdadeiro/videos/O Auto da Compadecida 2 .mp4" type="video/mp4">
+            </video>
+            <p>Sinopse: Em “O Auto da Compadecida 2”, após 20 anos desaparecido, João Grilo, interpretado por
+                Matheus Nachtergaele, retorna à pequena Taperoá para juntar-se ao seu velho companheiro, Chicó,
+                papel desempenhado por Selton Mello. Porém, ele agora é recebido como uma celebridade na cidade, afinal,
+                reza a lenda que havia sido morto e ressuscitado depois de um julgamento que tinha o Diabo como
+                acusador,
+                Nossa Senhora como defensora e o próprio Jesus Cristo como juiz.</p>
+        </div>
+
+        <!--Indicados ao oscar-->
+        <h1 id="titulo-oscar">Indicados ao Oscar 2024</h1>
+        <div id="galeria-oscar">
+            <div class="oscar">
+                <img src="/Blog Verdadeiro/imagens/Barbie.jpg" alt="barbie">
+                <h4>Barbie o Filme</h4>
+                <p>Com 8 indicações, este filme de Greta Gerwig competiu em diversas categorias, incluindo melhor
+                    filme,
+                    canção original, atriz coadjuvante, ator coadjuvante, figurino e maquiagem.</p>
+            </div>
+
+            <div class="oscar">
+                <img src="/Blog Verdadeiro/imagens/Assassinos da Lua das Flores.jpg" alt="Assassino da lua">
+                <h4>Assassino da Lua das Flores</h4>
+                <p>Com 10 indicações, este filme de Martin Scorsese foi um dos favoritos à premiação.</p>
+            </div>
+
+            <div class="oscar">
+                <img src="/Blog Verdadeiro/imagens/Pobres Criaturas.jpg" alt="Pobres criaturas">
+                <h4>Pobres criaturas</h4>
+                <p>Com 11 indicações, este filme de Yorgos Lanthimos conta a história de Bella Baxter, uma jovem
+                    trazida de volta à vida</p>
+            </div>
+
+            <div class="oscar">
+                <img src="/Blog Verdadeiro/imagens/Oppenheimer.jpg" alt="Oppenheimer">
+                <h4>Oppenheimer</h4>
+                <p>Com 13 indicações, este filme de Christopher Nolan foi o grande destaque da premiação</p>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-container">
+            <div class="categoria">
+                <h2>Filmes</h2>
+                <p><a href="/pagina de filmes/pagina noticia dos filmes/pagina moana2/pagina moana 2.html">Moana 2</a>
+                </p>
+                <p><a
+                        href="/pagina de filmes/pagina noticia dos filmes/pagina divertidamente 2/pagina divertidamente 2.html">Divertidamente
+                        2</a></p>
+                <p><a href="/pagina de filmes/pagina noticia dos filmes/pagina deadpool/pagina deadpool.html">Deadpool &
+                        Wolverine</a></p>
+                <p><a href="/pagina de filmes/pagina noticia dos filmes/pagina meumalvado/pagina meu malvado.html">Meu
+                        Malvado Favorito 4</a></p>
+            </div>
+
+            <div class="categoria">
+                <h2>Séries</h2>
+                <p><a
+                        href="/pagina de series/pagina noticia das series/pagina stranger things/pagina stranger sthings.html">Stranger
+                        Things</a></p>
+                <p><a href="/pagina de series/pagina noticia das series/pagina outer banks/pagina outer banks.html">Outer
+                        Banks</a></p>
+                <p><a href="#">The Boys</a></p>
+                <p><a href="/pagina de series/pagina noticia das series/pagina the office/pagina the office.html">The
+                        Office</a></p>
+            </div>
+
+            <div class="categoria">
+                <h2>Indicados ao Oscar</h2>
+                <p> <a href="/index.html#galeria-oscar">Barbie o Filme</a></p>
+                <p> <a href="/index.html#galeria-oscar">Oppenheimer</a></p>
+                <p> <a href="/index.html#galeria-oscar">Assasino da lua das Flores</a></p>
+                <p> <a href="/index.html#galeria-oscar">Pobres Criaturas</a></p>
+            </div>
+
+            <div class="button-login">
+                <h2>Login</h2>
+                <a href="/cadastro e login/login.html"><button id="button">Junte-se a Nós</button></a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
